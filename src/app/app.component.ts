@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularIs';
+  nom: string = "islem";
+  tab: string[] = ["nom", "prenom"];
+  name: string = "";
+
+  onClick() {
+    alert("Button clicked!");
+  }
 }

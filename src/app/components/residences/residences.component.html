@@ -1,0 +1,57 @@
+<h1 class="text-center my-4">Liste des Résidences</h1>
+
+<p class="text-center">📅 Date actuelle : {{ date | date:'dd/MM/yyyy' }}</p>
+
+<div class="mb-3 text-center">
+  <input type="text" class="form-control w-50 mx-auto" 
+         placeholder="Rechercher par adresse..." 
+         [(ngModel)]="searchText" (input)="updateFilteredResidences()">
+  <p>Résidences correspondant à "<strong>{{ searchText }}</strong>"</p>
+</div>
+
+<div class="d-flex flex-wrap justify-content-center">
+  <div *ngIf="filteredResidences.length > 0; else noResults">
+    <div class="card m-3 shadow" *ngFor="let res of filteredResidences" style="width: 18rem;">
+      <img [src]="res.image" class="card-img-top" alt="{{ res.name }}">
+      <div class="card-body text-center">
+        <h3 class="card-title">{{ res.name | uppercase }}</h3>
+        
+        <h3 [ngStyle]="{'color': getStatusColor(res.status)}">
+          {{ res.status | lowercase }} {{ getStatusIcon(res.status) }}
+        </h3>
+
+        <button class="btn btn-secondary btn-sm m-1" [routerLink]="['/residences', res.id]">🔍 Détails</button>
+
+        <button class="btn btn-info btn-sm m-1" [routerLink]="['/residences', res.id, 'apartments']">
+          🏘️ Appartements List
+        </button>
+
+        <button class="btn btn-danger btn-sm m-1" (click)="addToFavorite(res)">❤️ Like</button>
+
+        <button class="btn btn-warning btn-sm m-1" (click)="showLocation(res.address)">Show Location</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noResults>
+  <p class="text-center text-muted">⚠️ Aucune résidence ne correspond à votre recherche.</p>
+</ng-template>
+
+<div class="mt-4">
+  <h2 class="text-center">🏆 Résidences Favorites</h2>
+
+  <div *ngIf="favoriteResidences.length > 0; else noFavorites">
+    <ul class="list-group w-50 mx-auto">
+      <li class="list-group-item d-flex justify-content-between align-items-center" 
+          *ngFor="let res of favoriteResidences">
+        {{ res.name }}
+        <span (click)="removeFromFavorites(res)" style="cursor: pointer; color: red;">❌</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #noFavorites>
+  <p class="text-center text-muted">⚠️ Aucun favori ajouté.</p>
+</ng-template>
