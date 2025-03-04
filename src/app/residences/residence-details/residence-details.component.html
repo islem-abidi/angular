@@ -1,0 +1,16 @@
+<p>residence-details works!</p>
+
+
+<h1 class="text-center my-4">Détails de la résidence</h1>
+
+<div *ngIf="residence; else loading">
+  <p><strong>ID:</strong> {{ residence.id }}</p>
+  <p><strong>Nom:</strong> {{ residence.name }}</p>
+  <p><strong>Adresse:</strong> {{ residence.address }}</p>
+  <img [src]="residence.image" alt="{{ residence.name }}" class="img-fluid">
+  <p><strong>Status:</strong> {{ residence.status }}</p>
+</div>
+
+<ng-template #loading>
+  <p class="text-center text-muted">Chargement des détails...</p>
+</ng-template>

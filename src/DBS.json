@@ -1,0 +1,33 @@
+{
+    "residences": [
+      {
+        "id": 1,
+        "name": "El Fel",
+        "address": "Borj Cedria",
+        "image": "assets/imgs/a1.jpg",
+        "status": "Disponible"
+      },
+      {
+        "id": 2,
+        "name": "El Yasmine",
+        "address": "Ezzahra",
+        "image": "assets/imgs/a2.jpg",
+        "status": "Vendu"
+      },
+      {
+        "id": 3,
+        "name": "El Arij",
+        "address": "Rades",
+        "image": "assets/imgs/a3.jpg",
+        "status": "En Construction"
+      },
+      {
+        "id": 4,
+        "name": "El Anber",
+        "address": "Tunis",
+        "image": "assets/imgs/a4.jpg",
+        "status": "Disponible"
+      }
+    ],
+    "appartement": []
+  }

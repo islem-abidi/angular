@@ -20,7 +20,9 @@
           {{ res.status | lowercase }} {{ getStatusIcon(res.status) }}
         </h3>
 
-        <button class="btn btn-secondary btn-sm m-1" [routerLink]="['/residences', res.id]">🔍 Détails</button>
+        <button class="btn btn-secondary btn-sm m-1" [routerLink]="['/details',res.id]">🔍 Détails</button>
+
+
 
         <button class="btn btn-info btn-sm m-1" [routerLink]="['/residences', res.id, 'apartments']">
           🏘️ Appartements List
